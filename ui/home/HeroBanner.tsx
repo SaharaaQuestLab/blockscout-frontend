@@ -1,14 +1,17 @@
+/* eslint-disable max-len */
 import { Box, Flex, Heading, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 
 import config from 'configs/app';
+import colors from 'theme/foundations/colors';
 import AdBanner from 'ui/shared/ad/AdBanner';
 import ProfileMenuDesktop from 'ui/snippets/profileMenu/ProfileMenuDesktop';
 import SearchBar from 'ui/snippets/searchBar/SearchBar';
 import WalletMenuDesktop from 'ui/snippets/walletMenu/WalletMenuDesktop';
 
-const BACKGROUND_DEFAULT = 'radial-gradient(103.03% 103.03% at 0% 0%, rgba(183, 148, 244, 0.8) 0%, rgba(0, 163, 196, 0.8) 100%), var(--chakra-colors-blue-400)';
-const TEXT_COLOR_DEFAULT = 'white';
+// const BACKGROUND_DEFAULT = 'radial-gradient(103.03% 103.03% at 0% 0%, rgba(183, 148, 244, 0.8) 0%, rgba(0, 163, 196, 0.8) 100%), var(--chakra-colors-blue-400)';
+const BACKGROUND_DEFAULT = '#2A2D2E';
+// const TEXT_COLOR_DEFAULT = 'white';
 const BORDER_DEFAULT = 'none';
 
 const HeroBanner = () => {
@@ -24,17 +27,17 @@ const HeroBanner = () => {
     BACKGROUND_DEFAULT,
   );
 
-  const textColor = useColorModeValue(
-    // light mode
-    config.UI.homepage.heroBanner?.text_color?.[0] ||
-    config.UI.homepage.plate.textColor ||
-    TEXT_COLOR_DEFAULT,
-    // dark mode
-    config.UI.homepage.heroBanner?.text_color?.[1] ||
-    config.UI.homepage.heroBanner?.text_color?.[0] ||
-    config.UI.homepage.plate.textColor ||
-    TEXT_COLOR_DEFAULT,
-  );
+  // const textColor = useColorModeValue(
+  //   // light mode
+  //   config.UI.homepage.heroBanner?.text_color?.[0] ||
+  //   config.UI.homepage.plate.textColor ||
+  //   TEXT_COLOR_DEFAULT,
+  //   // dark mode
+  //   config.UI.homepage.heroBanner?.text_color?.[1] ||
+  //   config.UI.homepage.heroBanner?.text_color?.[0] ||
+  //   config.UI.homepage.plate.textColor ||
+  //   TEXT_COLOR_DEFAULT,
+  // );
 
   const border = useColorModeValue(
     config.UI.homepage.heroBanner?.border?.[0] || BORDER_DEFAULT,
@@ -58,7 +61,7 @@ const HeroBanner = () => {
             fontSize={{ base: '18px', lg: '30px' }}
             lineHeight={{ base: '24px', lg: '36px' }}
             fontWeight={{ base: 500, lg: 700 }}
-            color={ textColor }
+            color={ colors.blue[500] }
           >
             {
               config.meta.seo.enhancedDataEnabled ?
