@@ -5,6 +5,7 @@ import config from 'configs/app';
 import useApiQuery from 'lib/api/useApiQuery';
 import dayjs from 'lib/date/dayjs';
 import { HOMEPAGE_STATS } from 'stubs/stats';
+import colors from 'theme/foundations/colors';
 import GasTrackerChart from 'ui/gasTracker/GasTrackerChart';
 import GasTrackerNetworkUtilization from 'ui/gasTracker/GasTrackerNetworkUtilization';
 import GasTrackerPrices from 'ui/gasTracker/GasTrackerPrices';
@@ -66,7 +67,7 @@ const GasTracker = () => {
 
   const snippets = (() => {
     if (!isPlaceholderData && data?.gas_prices?.slow === null && data?.gas_prices.average === null && data.gas_prices.fast === null) {
-      return <Alert status="warning">No recent data available</Alert>;
+      return <Alert bgColor={ colors.gray[700] } status="warning">No recent data available</Alert>;
     }
 
     return data?.gas_prices ? <GasTrackerPrices prices={ data.gas_prices } isLoading={ isLoading }/> : null;

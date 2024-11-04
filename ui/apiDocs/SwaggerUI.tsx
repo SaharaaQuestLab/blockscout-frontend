@@ -10,9 +10,12 @@ import dynamic from 'next/dynamic';
 import React from 'react';
 
 import config from 'configs/app';
+// eslint-disable-next-line import-helpers/order-imports
 import ContentLoader from 'ui/shared/ContentLoader';
 
 import 'swagger-ui-react/swagger-ui.css';
+// eslint-disable-next-line import-helpers/order-imports
+import colors from 'theme/foundations/colors';
 
 const feature = config.features.restApiDocs;
 
@@ -39,6 +42,14 @@ const SwaggerUI = () => {
     },
     '.swagger-ui': {
       color: mainColor,
+    },
+    '.swagger-ui .opblock.opblock-get': {
+      bgColor: colors.gray[700],
+      borderColor: colors.blue[500],
+    },
+    '.swagger-ui .opblock-summary-control .opblock-summary-method': {
+      bgColor: colors.blue[500],
+      color: '#212405',
     },
     '.swagger-ui .opblock-summary-control:focus': {
       outline: 'none',

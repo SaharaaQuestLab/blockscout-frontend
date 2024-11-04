@@ -21,6 +21,7 @@ import Menu from 'ui/shared/chakra/Menu';
 import IconSvg from 'ui/shared/IconSvg';
 
 import FullscreenChartModal from './FullscreenChartModal';
+import colors from 'theme/foundations/colors';
 
 export type Props = {
   items?: Array<TimeChartItem>;
@@ -138,11 +139,12 @@ const ChartMenu = ({
             </VisuallyHidden>
           </MenuButton>
         </Skeleton>
-        <MenuList>
+        <MenuList bgColor={ colors.gray[600] }>
           { chartUrl && (
             <MenuItem
               display="flex"
               alignItems="center"
+              bgColor={ colors.gray[600] }
               onClick={ hasShare ? handleShare : onCopy }
               closeOnSelect={ hasShare ? false : true }
             >
@@ -153,6 +155,7 @@ const ChartMenu = ({
           <MenuItem
             display="flex"
             alignItems="center"
+            bgColor={ colors.gray[600] }
             onClick={ showChartFullscreen }
           >
             <IconSvg name="scope" boxSize={ 5 } mr={ 3 }/>
@@ -161,6 +164,7 @@ const ChartMenu = ({
           <MenuItem
             display="flex"
             alignItems="center"
+            bgColor={ colors.gray[600] }
             onClick={ handleFileSaveClick }
           >
             <IconSvg name="files/image" boxSize={ 5 } mr={ 3 }/>
@@ -169,6 +173,7 @@ const ChartMenu = ({
           <MenuItem
             display="flex"
             alignItems="center"
+            bgColor={ colors.gray[600] }
             onClick={ handleSVGSavingClick }
           >
             <IconSvg name="files/csv" boxSize={ 5 } mr={ 3 }/>

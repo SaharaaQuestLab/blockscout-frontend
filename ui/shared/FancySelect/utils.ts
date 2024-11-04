@@ -68,6 +68,14 @@ const getChakraStyles: (colorMode: ColorMode) => ChakraStylesConfig<Option> = (c
       transform: 'none',
       ...getSingleValueStyles(state.selectProps.size),
     }),
+    menuList: (provided) => ({
+      ...provided,
+      backgroundColor: 'gray.600',
+    }),
+    option: (provided) => ({
+      ...provided,
+      backgroundColor: 'gray.600',
+    }),
   };
 };
 

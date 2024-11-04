@@ -3,6 +3,7 @@ import React from 'react';
 
 import type { NavItem, NavGroupItem } from 'types/client/navigation';
 
+import colors from 'theme/foundations/colors';
 import IconSvg from 'ui/shared/IconSvg';
 
 interface Props {
@@ -12,7 +13,7 @@ interface Props {
 
 const NavLinkIcon = ({ item, className }: Props) => {
   if ('icon' in item && item.icon) {
-    return <IconSvg className={ className } name={ item.icon } boxSize="30px" flexShrink={ 0 }/>;
+    return <IconSvg className={ className } color={ item.isActive ? colors.blue[500] : '' } name={ item.icon } boxSize="30px" flexShrink={ 0 }/>;
   }
   if ('iconComponent' in item && item.iconComponent) {
     const IconComponent = item.iconComponent;
