@@ -17,11 +17,11 @@ import type { Resolution } from '@blockscout/stats-types';
 import dayjs from 'lib/date/dayjs';
 import isBrowser from 'lib/isBrowser';
 import saveAsCSV from 'lib/saveAsCSV';
+import colors from 'theme/foundations/colors';
 import Menu from 'ui/shared/chakra/Menu';
 import IconSvg from 'ui/shared/IconSvg';
 
 import FullscreenChartModal from './FullscreenChartModal';
-import colors from 'theme/foundations/colors';
 
 export type Props = {
   items?: Array<TimeChartItem>;
