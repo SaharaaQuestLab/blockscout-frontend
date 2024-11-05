@@ -35,7 +35,7 @@ const CustomArrowDownIcon = () => (
     <path d="M14.6427 12.5713H13.3034C13.2123 12.5713 13.1266 12.5266 13.073 12.4534L7.99981 5.46057L2.92659 12.4534C2.87302 12.5266 2.78731 12.5713 2.69624 12.5713H1.35695C1.24088 12.5713 1.17302 12.4391 1.24088 12.3445L7.53731 3.66415C7.76588 3.34986 8.23374 3.34986 8.46052 3.66415L14.757 12.3445C14.8266 12.4391 14.7587 12.5713 14.6427 12.5713V12.5713Z" fill="#F5F5F5"/>
   </svg>
 );
-const NeverShowInfoPlugin = () => {
+const InfoPlugin = () => {
   return {
     components: {
       SchemesContainer: () => null,
@@ -164,7 +164,7 @@ const SwaggerUI = () => {
     <Box sx={ swaggerStyle }>
       <SwaggerUIReact
         url={ feature.specUrl }
-        plugins={ [ NeverShowInfoPlugin ] }
+        plugins={ [ InfoPlugin ] }
         requestInterceptor={ reqInterceptor }
       />
     </Box>
