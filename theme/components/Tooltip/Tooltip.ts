@@ -1,6 +1,7 @@
 import { Tooltip as TooltipComponent } from '@chakra-ui/react';
 import { defineStyle, defineStyleConfig } from '@chakra-ui/styled-system';
 import { mode, cssVar } from '@chakra-ui/theme-tools';
+import colors from 'theme/foundations/colors';
 
 const $bg = cssVar('tooltip-bg');
 const $fg = cssVar('tooltip-fg');
@@ -30,8 +31,8 @@ const baseStyle = defineStyle((props) => {
   const fg = mode('white', 'black')(props);
 
   return {
-    bg: $bg.reference,
-    color: $fg.reference,
+    bg: colors.gray[500],
+    color: colors.white,
     [$bg.variable]: `colors.${ bg }`,
     [$fg.variable]: `colors.${ fg }`,
     [$arrowBg.variable]: $bg.reference,
