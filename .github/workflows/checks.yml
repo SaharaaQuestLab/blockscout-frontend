@@ -43,7 +43,7 @@ jobs:
   
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
+        run: yarn 
 
       - name: Run ESLint
         run: yarn lint:eslint
@@ -75,10 +75,10 @@ jobs:
     
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
+        run: yarn 
 
       - name: Install script dependencies
-        run: cd ./deploy/tools/envs-validator && yarn --frozen-lockfile
+        run: cd ./deploy/tools/envs-validator && yarn 
 
       - name: Run validation tests
         run: |
@@ -114,7 +114,7 @@ jobs:
     
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
+        run: yarn 
 
       - name: Run Jest
         run: yarn test:jest ${{ github.event_name == 'pull_request' && '--changedSince=origin/main' || '' }} --passWithNoTests
@@ -146,10 +146,10 @@ jobs:
       
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
+        run: yarn 
 
       - name: Install script dependencies 
-        run: cd ./deploy/tools/affected-tests && yarn --frozen-lockfile
+        run: cd ./deploy/tools/affected-tests && yarn 
       
       - name: Run script
         run: yarn test:pw:detect-affected
@@ -203,7 +203,7 @@ jobs:
     
       - name: Install dependencies
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
+        run: yarn 
 
       - name: Download affected tests list
         if: ${{ needs.pw_affected_tests.result == 'success' }}

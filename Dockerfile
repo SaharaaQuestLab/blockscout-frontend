@@ -11,21 +11,21 @@ RUN ln -sf /usr/bin/python3 /usr/bin/python
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN apk add git
-RUN yarn --frozen-lockfile
+RUN yarn 
 
 
 ### FEATURE REPORTER
 # Install dependencies
 WORKDIR /feature-reporter
 COPY ./deploy/tools/feature-reporter/package.json ./deploy/tools/feature-reporter/yarn.lock ./
-RUN yarn --frozen-lockfile
+RUN yarn 
 
 
 ### ENV VARIABLES CHECKER
 # Install dependencies
 WORKDIR /envs-validator
 COPY ./deploy/tools/envs-validator/package.json ./deploy/tools/envs-validator/yarn.lock ./
-RUN yarn --frozen-lockfile
+RUN yarn 
 
 
 # *****************************
