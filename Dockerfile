@@ -17,21 +17,21 @@ RUN yarn config set nodeLinker node-modules -H
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN apk add git
-RUN yarn 
+RUN yarn --frozen-lockfile
 
 
 ### FEATURE REPORTER
 # Install dependencies
 WORKDIR /feature-reporter
 COPY ./deploy/tools/feature-reporter/package.json ./deploy/tools/feature-reporter/yarn.lock ./
-RUN yarn 
+RUN yarn --frozen-lockfile
 
 
 ### ENV VARIABLES CHECKER
 # Install dependencies
 WORKDIR /envs-validator
 COPY ./deploy/tools/envs-validator/package.json ./deploy/tools/envs-validator/yarn.lock ./
-RUN yarn 
+RUN yarn --frozen-lockfile
 
 
 # *****************************
@@ -39,6 +39,11 @@ RUN yarn
 # *****************************
 FROM node:20.17.0-alpine AS builder
 RUN apk add --no-cache --upgrade libc6-compat bash
+
+ENV YARN_VERSION=4.5.3
+RUN corepack enable && corepack prepare yarn@${YARN_VERSION}
+RUN yarn policies set-version $YARN_VERSION
+RUN yarn config set nodeLinker node-modules -H
 
 # pass build args to env variables
 ARG GIT_COMMIT_SHA
@@ -89,6 +94,11 @@ RUN cd ./deploy/tools/envs-validator && yarn build
 # Production image, copy all the files and run next
 FROM node:20.17.0-alpine AS runner
 RUN apk add --no-cache --upgrade bash curl jq unzip
+
+ENV YARN_VERSION=4.5.3
+RUN corepack enable && corepack prepare yarn@${YARN_VERSION}
+RUN yarn policies set-version $YARN_VERSION
+RUN yarn config set nodeLinker node-modules -H
 
 ### APP
 WORKDIR /app
