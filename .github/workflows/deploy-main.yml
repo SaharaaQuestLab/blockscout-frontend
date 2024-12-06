@@ -5,15 +5,15 @@ on:
     branches:
       - main
     paths-ignore:
-      - '.github/ISSUE_TEMPLATE/**'
-      - '.husky/**'
-      - '.vscode/**'
-      - 'docs/**'
-      - 'jest/**'
-      - 'mocks/**'
-      - 'playwright/**'
-      - 'stubs/**'
-      - 'tools/**'
+      - ".github/ISSUE_TEMPLATE/**"
+      - ".husky/**"
+      - ".vscode/**"
+      - "docs/**"
+      - "jest/**"
+      - "mocks/**"
+      - "playwright/**"
+      - "stubs/**"
+      - "tools/**"
   workflow_dispatch:
 
 concurrency:
@@ -23,5 +23,10 @@ concurrency:
 jobs:
   publish_image:
     name: Publish Docker image
-    uses: './.github/workflows/publish-image.yml'
+    uses: "./.github/workflows/publish-image.yml"
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
     secrets: inherit
