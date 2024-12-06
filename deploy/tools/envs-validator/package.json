@@ -17,5 +17,9 @@
   "devDependencies": {
     "dotenv-cli": "^7.2.1",
     "tsconfig-paths-webpack-plugin": "^4.1.0"
+  },
+  "volta": {
+    "node": "20.17.0",
+    "yarn": "4.5.3"
   }
 }
