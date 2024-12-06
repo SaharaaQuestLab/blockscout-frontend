@@ -1,6 +1,7 @@
 import { Tooltip as TooltipComponent } from '@chakra-ui/react';
 import { defineStyle, defineStyleConfig } from '@chakra-ui/styled-system';
 import { mode, cssVar } from '@chakra-ui/theme-tools';
+
 import colors from 'theme/foundations/colors';
 
 const $bg = cssVar('tooltip-bg');
