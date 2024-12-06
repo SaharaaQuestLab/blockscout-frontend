@@ -3,7 +3,7 @@
 # *****************************
 FROM node:20.17.0-alpine AS deps
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat python3 make g++
+RUN apk add --no-cache libc6-compat python3 make g++ curl
 RUN ln -sf /usr/bin/python3 /usr/bin/python
 RUN curl -sL https://yarnpkg.com/install.sh | bash -s -- --version 4.1.1
 
