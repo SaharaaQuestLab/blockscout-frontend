@@ -6,6 +6,12 @@ FROM node:20.17.0-alpine AS deps
 RUN apk add --no-cache libc6-compat python3 make g++
 RUN ln -sf /usr/bin/python3 /usr/bin/python
 
+ENV YARN_VERSION=4.5.3
+RUN corepack enable && corepack prepare yarn@${YARN_VERSION}
+RUN yarn policies set-version $YARN_VERSION
+RUN yarn config set nodeLinker node-modules -H
+
+
 ### APP
 # Install dependencies
 WORKDIR /app
