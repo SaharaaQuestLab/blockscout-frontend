@@ -22,7 +22,7 @@ const SettingsColorTheme = ({ }: Props) => {
       return;
     }
 
-    setColorMode(nextTheme.colorMode);
+    setColorMode('dark');
 
     const varName = nextTheme.colorMode === 'light' ? '--chakra-colors-white' : '--chakra-colors-black';
     window.document.documentElement.style.setProperty(varName, hex);
