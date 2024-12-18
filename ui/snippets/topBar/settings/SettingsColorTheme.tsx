@@ -18,17 +18,17 @@ const SettingsColorTheme = ({ }: Props) => {
   const setTheme = React.useCallback((hex: string) => {
     const nextTheme = COLOR_THEMES.find((theme) => theme.hex === hex);
 
-    if (!nextTheme) {
-      return;
-    }
+    // if (!nextTheme) {
+    //   return;
+    // }
 
     setColorMode('dark');
 
-    const varName = nextTheme.colorMode === 'light' ? '--chakra-colors-white' : '--chakra-colors-black';
+    const varName = '--chakra-colors-black';
     window.document.documentElement.style.setProperty(varName, hex);
 
     cookies.set(cookies.NAMES.COLOR_MODE_HEX, hex);
-    window.localStorage.setItem(cookies.NAMES.COLOR_MODE, nextTheme.colorMode);
+    window.localStorage.setItem(cookies.NAMES.COLOR_MODE, nextTheme?.colorMode ?? 'dark');
   }, [ setColorMode ]);
 
   React.useEffect(() => {
