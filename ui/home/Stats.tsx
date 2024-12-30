@@ -2,12 +2,14 @@ import { Grid } from '@chakra-ui/react';
 import BigNumber from 'bignumber.js';
 import React from 'react';
 
+import { Resolution } from '@blockscout/stats-types';
 import type { HomeStatsWidgetId } from 'types/homepage';
 
 import config from 'configs/app';
 import useApiQuery from 'lib/api/useApiQuery';
 import { WEI } from 'lib/consts';
 import { HOMEPAGE_STATS } from 'stubs/stats';
+import useChartQuery from 'ui/shared/chart/useChartQuery';
 import GasInfoTooltip from 'ui/shared/gas/GasInfoTooltip';
 import GasPrice from 'ui/shared/gas/GasPrice';
 import IconSvg from 'ui/shared/IconSvg';
@@ -24,6 +26,7 @@ const Stats = () => {
       placeholderData: HOMEPAGE_STATS,
     },
   });
+  const { items: chartItems } = useChartQuery('activeAccounts', Resolution.DAY, 'oneMonth');
 
   React.useEffect(() => {
     if (!isPlaceholderData && !data?.gas_prices?.average) {
@@ -143,6 +146,13 @@ const Stats = () => {
         icon: 'wallet' as const,
         label: 'Wallet addresses',
         value: Number(data.total_addresses).toLocaleString(),
+        isLoading,
+      },
+      {
+        id: 'month_active_address' as const,
+        icon: 'wallet' as const,
+        label: 'Monthly Active Accounts',
+        value: chartItems?.reduce((acc, item) => acc + item.value, 0),
         isLoading,
       },
       hasGasTracker && data.gas_prices && {

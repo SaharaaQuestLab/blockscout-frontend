@@ -8,6 +8,7 @@ export const HOME_STATS_WIDGET_IDS = [
   'total_txs',
   'latest_l1_state_batch',
   'wallet_addresses',
+  'month_active_address',
   'gas_tracker',
   'btc_locked',
   'current_epoch',
