@@ -8,7 +8,7 @@ import type { HomeStatsWidgetId } from 'types/homepage';
 import config from 'configs/app';
 import useApiQuery from 'lib/api/useApiQuery';
 import { WEI } from 'lib/consts';
-import { HOMEPAGE_STATS } from 'stubs/stats';
+import { HOMEPAGE_STATS, STATS_COUNTER } from 'stubs/stats';
 import useChartQuery from 'ui/shared/chart/useChartQuery';
 import GasInfoTooltip from 'ui/shared/gas/GasInfoTooltip';
 import GasPrice from 'ui/shared/gas/GasPrice';
@@ -20,6 +20,11 @@ const rollupFeature = config.features.rollup;
 
 const Stats = () => {
   const [ hasGasTracker, setHasGasTracker ] = React.useState(config.features.gasTracker.isEnabled);
+  const { data: statsCalc } = useApiQuery('stats_counters', {
+    queryOptions: {
+      placeholderData: { counters: Array(10).fill(STATS_COUNTER) },
+    },
+  });
   const { data, isPlaceholderData, isError, dataUpdatedAt } = useApiQuery('stats', {
     queryOptions: {
       refetchOnMount: false,
@@ -149,10 +154,24 @@ const Stats = () => {
         isLoading,
       },
       {
-        id: 'month_active_address' as const,
+        id: 'daily_active_address' as const,
         icon: 'wallet' as const,
-        label: 'Monthly Active Accounts',
-        value: chartItems?.reduce((acc, item) => acc + item.value, 0),
+        label: 'Daily active accounts',
+        value: chartItems?.[chartItems.length - 1]?.value.toLocaleString(),
+        isLoading,
+      },
+      // {
+      //   id: 'month_active_address' as const,
+      //   icon: 'wallet' as const,
+      //   label: 'Monthly Active Accounts',
+      //   value: chartItems?.reduce((acc, item) => acc + item.value, 0).toLocaleString(),
+      //   isLoading,
+      // },
+      {
+        id: 'total_accounts' as const,
+        icon: 'wallet' as const,
+        label: 'Total accounts',
+        value: Number(statsCalc?.counters.filter(item => item.id === 'totalAccounts')[0]?.value).toLocaleString(),
         isLoading,
       },
       hasGasTracker && data.gas_prices && {
