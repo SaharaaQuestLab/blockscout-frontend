@@ -157,7 +157,7 @@ const Stats = () => {
         id: 'daily_active_address' as const,
         icon: 'wallet' as const,
         label: 'Daily active accounts',
-        value: chartItems?.[chartItems.length - 1]?.value.toLocaleString(),
+        value: chartItems?.[chartItems.length - 2]?.value.toLocaleString(),
         isLoading,
       },
       // {
