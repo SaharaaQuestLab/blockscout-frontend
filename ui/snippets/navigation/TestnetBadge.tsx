@@ -9,6 +9,9 @@ interface Props {
 }
 
 const TestnetBadge = ({ className }: Props) => {
+
+  return null;
+
   if (!config.chain.isTestnet) {
     return null;
   }

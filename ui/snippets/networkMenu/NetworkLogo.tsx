@@ -50,6 +50,10 @@ const NetworkLogo = ({ isCollapsed, onClick, className }: Props) => {
   const iconStyle = useColorModeValue({}, !config.UI.navigation.icon.dark ? darkModeFilter : {});
 
   return (
+    <span></span>
+  );
+
+  return (
     <Box
       className={ className }
       as="a"
