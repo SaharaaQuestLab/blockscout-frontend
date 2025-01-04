@@ -50,7 +50,12 @@ const NetworkLogo = ({ isCollapsed, onClick, className }: Props) => {
   const iconStyle = useColorModeValue({}, !config.UI.navigation.icon.dark ? darkModeFilter : {});
 
   return (
-    <span></span>
+    <Box
+      href={ route({ pathname: '/' }) }
+      as="a"
+    >
+      Sahara Testnet
+    </Box>
   );
 
   return (
