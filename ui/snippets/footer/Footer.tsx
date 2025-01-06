@@ -1,5 +1,5 @@
 import type { GridProps, HTMLChakraProps } from '@chakra-ui/react';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Link } from '@chakra-ui/react';
 import React from 'react';
 
 import config from 'configs/app';
@@ -19,7 +19,7 @@ const contentProps: GridProps = {
   m: '0 auto',
 };
 
-const SocialLInk = [
+const SocialLink = [
   {
     icon: 'social/twitter' as const,
     iconSize: '28px',
@@ -45,8 +45,12 @@ const Footer = () => {
         <span>Sahara AI</span>
         <Flex gap={ 4 } cursor="pointer">
           {
-            SocialLInk.map((link) => {
-              return <IconSvg key={ link.url } boxSize={ link.iconSize || 5 } name={ link.icon }/>;
+            SocialLink.map((link) => {
+              return (
+                <Link href={ link.url } color="white" key={ link.url } target="_blank" >
+                  <IconSvg boxSize={ link.iconSize || 5 } name={ link.icon }/>
+                </Link>
+              );
             })
           }
         </Flex>
