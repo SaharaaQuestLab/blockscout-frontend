@@ -51,17 +51,6 @@ const NetworkLogo = ({ isCollapsed, onClick, className }: Props) => {
 
   return (
     <Box
-      href={ route({ pathname: '/' }) }
-      as="a"
-    >
-      {
-        isCollapsed ? 'Sahara' : 'Sahara Testnet'
-      }
-    </Box>
-  );
-
-  return (
-    <Box
       className={ className }
       as="a"
       href={ route({ pathname: '/' }) }
