@@ -153,7 +153,7 @@ export type AddressTagErrors = {
 }
 
 export type TransactionTagErrors = {
-  tx_hash: Array<string>;
+  transaction_hash: Array<string>;
   name: Array<string>;
   identity_id?: Array<string>;
 }

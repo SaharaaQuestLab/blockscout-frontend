@@ -89,16 +89,16 @@ const BlocksTableItem = ({ data, isLoading, enableTimeIncrement }: Props) => {
         </Td>
       ) }
       <Td isNumeric fontSize="sm">
-        { data.tx_count > 0 ? (
+        { data.transaction_count > 0 ? (
           <Skeleton isLoaded={ !isLoading } display="inline-block">
             <LinkInternal href={ route({
               pathname: '/block/[height_or_hash]',
               query: { height_or_hash: String(data.height), tab: 'txs' },
             }) }>
-              { data.tx_count }
+              { data.transaction_count }
             </LinkInternal>
           </Skeleton>
-        ) : data.tx_count }
+        ) : data.transaction_count }
       </Td>
       <Td fontSize="sm">
         <Skeleton isLoaded={ !isLoading } display="inline-block">{ BigNumber(data.gas_used || 0).toFormat() }</Skeleton>

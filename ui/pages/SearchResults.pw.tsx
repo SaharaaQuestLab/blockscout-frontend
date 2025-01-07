@@ -87,14 +87,14 @@ test('search by block hash +@mobile', async({ render, mockApiResponse }) => {
 test('search by tx hash +@mobile', async({ render, mockApiResponse }) => {
   const hooksConfig = {
     router: {
-      query: { q: searchMock.tx1.tx_hash },
+      query: { q: searchMock.tx1.transaction_hash },
     },
   };
   const data = {
     items: [ searchMock.tx1 ],
     next_page_params: null,
   };
-  await mockApiResponse('search', data, { queryParams: { q: searchMock.tx1.tx_hash } });
+  await mockApiResponse('search', data, { queryParams: { q: searchMock.tx1.transaction_hash } });
   const component = await render(<SearchResults/>, { hooksConfig });
 
   await expect(component.locator('main')).toHaveScreenshot();

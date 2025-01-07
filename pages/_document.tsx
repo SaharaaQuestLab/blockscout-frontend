@@ -33,6 +33,7 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
+          <meta name="robots" content="noindex"></meta>
           { /* FONTS */ }
           <link
             href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"

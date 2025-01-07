@@ -36,7 +36,7 @@ const SearchBarSuggestItem = ({ data, isMobile, searchTerm, onClick }: Props) =>
         return route({ pathname: '/address/[hash]', query: { hash: data.address } });
       }
       case 'transaction': {
-        return route({ pathname: '/tx/[hash]', query: { hash: data.tx_hash } });
+        return route({ pathname: '/tx/[hash]', query: { hash: data.transaction_hash } });
       }
       case 'block': {
         const isFutureBlock = data.timestamp === undefined;

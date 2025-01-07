@@ -20,7 +20,7 @@ export interface BlockBaseFeeCelo {
 export interface Block {
   height: number;
   timestamp: string;
-  tx_count: number;
+  transaction_count: number;
   miner: AddressParam;
   size: number;
   hash: string;

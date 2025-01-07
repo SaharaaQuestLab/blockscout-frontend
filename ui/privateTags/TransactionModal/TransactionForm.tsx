@@ -65,8 +65,8 @@ const TransactionForm: React.FC<Props> = ({ data, onClose, onSuccess, setAlertVi
     onError: (error: ResourceErrorAccount<TransactionTagErrors>) => {
       setPending(false);
       const errorMap = error.payload?.errors;
-      if (errorMap?.tx_hash || errorMap?.name) {
-        errorMap?.tx_hash && setError('transaction', { type: 'custom', message: getErrorMessage(errorMap, 'tx_hash') });
+      if (errorMap?.transaction_hash || errorMap?.name) {
+        errorMap?.transaction_hash && setError('transaction', { type: 'custom', message: getErrorMessage(errorMap, 'tx_hash') });
         errorMap?.name && setError('tag', { type: 'custom', message: getErrorMessage(errorMap, 'name') });
       } else if (errorMap?.identity_id) {
         setError('transaction', { type: 'custom', message: getErrorMessage(errorMap, 'identity_id') });
