@@ -2,7 +2,7 @@ import { useColorMode } from '@chakra-ui/react';
 import React from 'react';
 
 import * as cookies from 'lib/cookies';
-import { COLOR_THEMES } from 'lib/settings/colorTheme';
+// import { COLOR_THEMES } from 'lib/settings/colorTheme';
 
 // import SettingsSample from './SettingsSample';
 
@@ -16,7 +16,7 @@ const SettingsColorTheme = ({ }: Props) => {
   const [ , setActiveHex ] = React.useState<string>();
 
   const setTheme = React.useCallback((hex: string) => {
-    const nextTheme = COLOR_THEMES.find((theme) => theme.hex === hex);
+    // const nextTheme = COLOR_THEMES.find((theme) => theme.hex === hex);
 
     // if (!nextTheme) {
     //   return;
@@ -28,7 +28,7 @@ const SettingsColorTheme = ({ }: Props) => {
     window.document.documentElement.style.setProperty(varName, hex);
 
     cookies.set(cookies.NAMES.COLOR_MODE_HEX, hex);
-    window.localStorage.setItem(cookies.NAMES.COLOR_MODE, nextTheme?.colorMode ?? 'dark');
+    window.localStorage.setItem(cookies.NAMES.COLOR_MODE, 'dark');
   }, [ setColorMode ]);
 
   React.useEffect(() => {
