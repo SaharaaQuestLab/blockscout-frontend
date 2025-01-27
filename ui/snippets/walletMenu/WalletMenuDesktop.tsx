@@ -71,11 +71,11 @@ export const WalletMenuDesktop = ({
           >
             <Button
               className={ className }
-              variant={ isHomePage ? 'hero' : 'header' }
+              variant="header"
               color="black"
               backgroundColor={ colors.blue[500] }
               data-selected={ isWalletConnected }
-              _hover={{ backgroundColor: colors.blue[500] }}
+              _hover={{ backgroundColor: colors.blue[500], color: 'black' }}
               data-warning={ isAutoConnectDisabled }
               flexShrink={ 0 }
               isLoading={
