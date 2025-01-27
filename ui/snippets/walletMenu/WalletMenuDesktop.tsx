@@ -6,6 +6,7 @@ import useApiQuery from 'lib/api/useApiQuery';
 import { useMarketplaceContext } from 'lib/contexts/marketplace';
 import useIsMobile from 'lib/hooks/useIsMobile';
 import * as mixpanel from 'lib/mixpanel/index';
+import colors from 'theme/foundations/colors';
 import Popover from 'ui/shared/chakra/Popover';
 import HashStringShorten from 'ui/shared/HashStringShorten';
 import IconSvg from 'ui/shared/IconSvg';
@@ -71,7 +72,10 @@ export const WalletMenuDesktop = ({
             <Button
               className={ className }
               variant={ isHomePage ? 'hero' : 'header' }
+              color="black"
+              backgroundColor={ colors.blue[500] }
               data-selected={ isWalletConnected }
+              _hover={{ backgroundColor: colors.blue[500] }}
               data-warning={ isAutoConnectDisabled }
               flexShrink={ 0 }
               isLoading={
