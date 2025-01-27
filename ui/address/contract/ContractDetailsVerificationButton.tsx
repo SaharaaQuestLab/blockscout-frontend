@@ -25,6 +25,7 @@ const ContractDetailsVerificationButton = ({ isLoading, addressHash, isPartially
   return (
     <Button
       size="sm"
+      color="black"
       mr={ isPartiallyVerified ? 0 : 3 }
       ml={ isPartiallyVerified ? 0 : 'auto' }
       flexShrink={ 0 }
