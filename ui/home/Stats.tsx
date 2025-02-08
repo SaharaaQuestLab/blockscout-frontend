@@ -2,14 +2,15 @@ import { Grid } from '@chakra-ui/react';
 import BigNumber from 'bignumber.js';
 import React from 'react';
 
-import { Resolution } from '@blockscout/stats-types';
+// import { Resolution } from '@blockscout/stats-types';
 import type { HomeStatsWidgetId } from 'types/homepage';
 
 import config from 'configs/app';
 import useApiQuery from 'lib/api/useApiQuery';
 import { WEI } from 'lib/consts';
-import { HOMEPAGE_STATS, STATS_COUNTER } from 'stubs/stats';
-import useChartQuery from 'ui/shared/chart/useChartQuery';
+import { HOMEPAGE_STATS } from 'stubs/stats';
+// import { HOMEPAGE_STATS, STATS_COUNTER } from 'stubs/stats';
+// import useChartQuery from 'ui/shared/chart/useChartQuery';
 import GasInfoTooltip from 'ui/shared/gas/GasInfoTooltip';
 import GasPrice from 'ui/shared/gas/GasPrice';
 import IconSvg from 'ui/shared/IconSvg';
@@ -20,18 +21,18 @@ const rollupFeature = config.features.rollup;
 
 const Stats = () => {
   const [ hasGasTracker, setHasGasTracker ] = React.useState(config.features.gasTracker.isEnabled);
-  const { data: statsCalc } = useApiQuery('stats_counters', {
-    queryOptions: {
-      placeholderData: { counters: Array(10).fill(STATS_COUNTER) },
-    },
-  });
+  // const { data: statsCalc } = useApiQuery('stats_counters', {
+  //   queryOptions: {
+  //     placeholderData: { counters: Array(10).fill(STATS_COUNTER) },
+  //   },
+  // });
   const { data, isPlaceholderData, isError, dataUpdatedAt } = useApiQuery('stats', {
     queryOptions: {
       refetchOnMount: false,
       placeholderData: HOMEPAGE_STATS,
     },
   });
-  const { items: chartItems } = useChartQuery('activeAccounts', Resolution.DAY, 'oneMonth');
+  // const { items: chartItems } = useChartQuery('activeAccounts', Resolution.DAY, 'oneMonth');
 
   React.useEffect(() => {
     if (!isPlaceholderData && !data?.gas_prices?.average) {
@@ -153,13 +154,13 @@ const Stats = () => {
         value: Number(data.total_addresses).toLocaleString(),
         isLoading,
       },
-      {
-        id: 'daily_active_address' as const,
-        icon: 'wallet' as const,
-        label: 'Daily active accounts',
-        value: chartItems?.[chartItems.length - 2]?.value.toLocaleString(),
-        isLoading,
-      },
+      // {
+      //   id: 'daily_active_address' as const,
+      //   icon: 'wallet' as const,
+      //   label: 'Daily active accounts',
+      //   value: chartItems?.[chartItems.length - 2]?.value.toLocaleString(),
+      //   isLoading,
+      // },
       // {
       //   id: 'month_active_address' as const,
       //   icon: 'wallet' as const,
@@ -167,13 +168,13 @@ const Stats = () => {
       //   value: chartItems?.reduce((acc, item) => acc + item.value, 0).toLocaleString(),
       //   isLoading,
       // },
-      {
-        id: 'total_accounts' as const,
-        icon: 'wallet' as const,
-        label: 'Total accounts',
-        value: Number(statsCalc?.counters.filter(item => item.id === 'totalAccounts')[0]?.value).toLocaleString(),
-        isLoading,
-      },
+      // {
+      //   id: 'total_accounts' as const,
+      //   icon: 'wallet' as const,
+      //   label: 'Total accounts',
+      //   value: Number(statsCalc?.counters.filter(item => item.id === 'totalAccounts')[0]?.value).toLocaleString(),
+      //   isLoading,
+      // },
       hasGasTracker && data.gas_prices && {
         id: 'gas_tracker' as const,
         icon: 'gas' as const,
