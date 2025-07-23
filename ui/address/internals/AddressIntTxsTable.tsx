@@ -16,6 +16,7 @@ interface Props {
 }
 
 const AddressIntTxsTable = ({ data, currentAddress, isLoading }: Props) => {
+
   return (
     <AddressHighlightProvider>
       <Table>

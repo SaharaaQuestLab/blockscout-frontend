@@ -24,7 +24,8 @@ const AddressIntTxsTableItem = ({
   error,
   created_contract: createdContract,
   transaction_hash: txnHash,
-  block,
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  block_number,
   timestamp,
   currentAddress,
   isLoading,
@@ -66,7 +67,7 @@ const AddressIntTxsTableItem = ({
       <Td verticalAlign="middle">
         <BlockEntity
           isLoading={ isLoading }
-          number={ block }
+          number={ block_number }
           noIcon
           fontSize="sm"
           lineHeight={ 5 }

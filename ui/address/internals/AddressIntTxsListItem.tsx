@@ -26,7 +26,8 @@ const TxInternalsListItem = ({
   error,
   created_contract: createdContract,
   transaction_hash: txnHash,
-  block,
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  block_number,
   timestamp,
   currentAddress,
   isLoading,
@@ -59,7 +60,7 @@ const TxInternalsListItem = ({
         <Skeleton isLoaded={ !isLoading } fontSize="sm" fontWeight={ 500 }>Block</Skeleton>
         <BlockEntity
           isLoading={ isLoading }
-          number={ block }
+          number={ block_number }
           noIcon
           fontSize="sm"
           lineHeight={ 5 }
